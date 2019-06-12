@@ -51,3 +51,6 @@ allpush: $(TAGS:%=.make/push-%)
 
 $(DIRS):
 	mkdir -p $@
+
+clear:
+	rm -rf $(DIRS)
