@@ -1,0 +1,9 @@
+language: generic
+dist: trusty
+
+git:
+  depth: 1
+
+script:
+  - make build
+  - docker run -it --rm conao3/mustache -v
