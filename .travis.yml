@@ -5,7 +5,6 @@ env:
   global:
     - secure: "AvAmooFLr6q2f2KWpKuKWq57iJtvETQJMWZV7Olxzh/+Ia9/JJ6E5KtIzQEmSFnFfuMA6Kd1iLE+ioQRSwKo6maSspWG+PJeeD1QHUxfxXjpBosOPC1LHQNns3WisETabhLRh/bw2OhaeSP5USmv9aYRs5Kir/0AJqisICb536+UB1SGqaU2LeE7xOZml+ZAmVV6SAxTIBbcxob09BhchuoNEEXaZsvYOvtNBxvl3PAf3VrkJNYmFeekqteAm4tkuX5iBgm8qiayACyWe8UqCWYvBkxIbcQnrgNaG+j3GF5ObxqfrJ9QBAg34DicFaNY8N46FR0gRLEDOqh40aoLTo+W3V7iK6VtDiy1RTGJWnI5vV5dQr0nBL6frXR0AGhqNpLr6Fp+yk1CJliNs2GgEfS03cCs74+7IoL20lrmcZS4xkGMM1hNdtTDm9SzNJ2+npD+rsLu0cyUD/aG8vZMcIsvOh/X3uUtDeO/8aEayhJcs0FZI0v3gGUjT1kpw/LLmIIYQR3DvwSxfpAmNDIJ7E716wThq860TwAxYur1ThaYp1TgJhirWUjTbROnMwumssydynf8ObANtEPL2HjloWJ++8wznWAqj4YQzZTGrFWVjqwISc7cilr9NlCscThaXY9cyrZm7uq3j3kxbg03mKsD2g/GAdGi8iGcCDrWbsM="
   matrix:
-    - DOCKER_TAG=alpine-latest
     - DOCKER_TAG=latest
 
 install:

@@ -16,7 +16,7 @@
 all:
 
 TAG ?= latest
-TAGS := alpine-latest latest
+TAGS := latest
 
 DIRS := .make
 
@@ -47,13 +47,10 @@ push: .make/push-$(TAG)
 	docker container run --rm -it conao3/mustache:latest -v
 	touch $@
 
-.make/build-alpine-latest: Dockerfiles/Dockerfile-latest
-	docker image build -t conao3/mustache:alpine-latest -f $< .
-	docker container run --rm -it conao3/mustache:alpine-latest -v
-	touch $@
-
-.make/push-%: .make/build-%
-	docker push conao3/mustache:$*
+.make/push-latest: .make/build-latest
+	docker tag conao3/mustache:latest conao3/mustache:alpine-latest
+        docker push conao3/mustache:latest
+	docker push conao3/mustache:alpine-latest
 
 ##################################################
 
