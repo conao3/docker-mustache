@@ -16,7 +16,7 @@
 all:
 
 TAG ?= latest
-TAGS := latest
+TAGS := alpine-latest latest
 
 DIRS := .make
 
@@ -39,18 +39,26 @@ allpush: $(TAGS:%=.make/push-%)
 
 ##################################################
 
-.make/build-%: Dockerfiles/Dockerfile-%
-	docker image build -t conao3/mustache:$* -f $< .
-	docker container run conao3/mustache:$* -v
+.make/build-latest: Dockerfiles/Dockerfile-latest
+	docker image build -t conao3/mustache:latest -f $< .
+	docker container run --rm -it conao3/mustache:latest -v
 	touch $@
 
-.make/push-latest: .make/build-latest
-	docker push conao3/mustache:latest
+.make/build-alpine-latest: Dockerfiles/Dockerfile-latest
+	docker image build -t conao3/mustache:alpine-latest -f $< .
+	docker container run --rm -it conao3/mustache:alpine-latest -v
+	touch $@
+
+.make/push-%: .make/build-%
+	docker push conao3/mustache:$*
 
 ##################################################
 
 $(DIRS):
 	mkdir -p $@
 
-clear:
+clear-image:
+	docker image ls conao3/mustache\* -q | xargs docker image rm -f
+
+clean:
 	rm -rf $(DIRS)
