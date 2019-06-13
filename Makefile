@@ -37,6 +37,9 @@ all: $(DIRS)
 allbuild: $(TAGS:%=.make/build-%)
 allpush: $(TAGS:%=.make/push-%)
 
+build: .make/build-$(TAG)
+push: .make/push-$(TAG)
+
 ##################################################
 
 .make/build-latest: Dockerfiles/Dockerfile-latest
