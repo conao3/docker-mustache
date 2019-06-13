@@ -23,5 +23,5 @@ branches:
 
 script:
   - make ci-checkout
-  - make & make push TAG=${DOCKER_TAG}
+  - make && make push TAG=${DOCKER_TAG}
   - make ci-merge && make ci-push

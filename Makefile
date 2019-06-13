@@ -48,8 +48,8 @@ push: .make/push-$(TAG)
 	touch $@
 
 .make/push-latest: .make/build-latest
-	docker tag conao3/mustache:latest conao3/mustache:alpine-latest
-        docker push conao3/mustache:latest
+	docker tag conao3/mustache:latest conao3/mustache\:alpine-latest
+	docker push conao3/mustache:latest
 	docker push conao3/mustache:alpine-latest
 
 ##################################################
