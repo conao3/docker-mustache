@@ -21,4 +21,4 @@ FROM alpine:3.9
 
 RUN apk --no-cache add ruby && { gem install mustache || true; }
 
-ENTRYPOINT [ "/usr/bin/mustache" ]
+ENTRYPOINT ["/usr/bin/mustache"]
