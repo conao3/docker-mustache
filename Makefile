@@ -62,3 +62,17 @@ clear-image:
 
 clean:
 	rm -rf $(DIRS)
+
+##################################################
+
+ci-checkout:
+	git checkout master
+	git checkout -b travis-$$TRAVIS_JOB_NUMBER
+	echo "job $$TRAVIS_JOB_NUMBER at $(DATEDETAIL)" >> commit.log
+
+ci-merge:
+	git checkout master
+	git merge --no-ff travis-$$TRAVIS_JOB_NUMBER -m "merge travis-$$TRAVIS_JOB_NUMBER [skip ci]"
+
+ci-push:
+	git push origin master

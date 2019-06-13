@@ -1,9 +1,25 @@
 language: generic
 dist: trusty
 
-git:
-  depth: 1
+env:
+  matrix:
+    - DOCKER_TAG=alpine-latest
+    - DOCKER_TAG=latest
+
+install:
+  - openssl aes-256-cbc -K $encrypted_9f0f9f3d5eaa_key -iv $encrypted_9f0f9f3d5eaa_iv -in .travis_rsa.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - git config --global user.name conao3
+  - git config --global user.email conao3@gmail.com
+
+  - git remote -v
+  - git remote set-url origin git@github.com:conao3/docker-mustache.git
+
+branches:
+  only:
+    - master
 
 script:
-  - make build
-  - docker run -it --rm conao3/mustache -v
+  - make ci-checkout
+  - make & make push TAG=${DOCKER_TAG}
+  - make ci-merge && make ci-push
